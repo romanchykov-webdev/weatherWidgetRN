@@ -1,37 +1,22 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
-import 'react-native-reanimated';
 
-import { useColorScheme } from '@/hooks/useColorScheme';
+import {NavigationContainer} from "@react-navigation/native"; // Импортируем контейнер навигации для управления навигацией в приложении.
+import {createNativeStackNavigator} from "@react-navigation/native-stack"; // Импортируем функцию для создания стека навигации с поддержкой нативных переходов.
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
+import {LogBox} from "react-native";
+import Index from './index'
 
-export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
+LogBox.ignoreLogs([
+    'Non-serializable values were found in the navigation state' // Игнорируем предупреждение о не сериализуемых значениях в состоянии навигации.
+])
 
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
+const Stack = createNativeStackNavigator(); // Создаем стек навигации для приложения, где будет управляться переход между экранами.
 
-  if (!loaded) {
-    return null;
-  }
-
-  return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-    </ThemeProvider>
-  );
+export const RootLayout = () => { // Экспортируем компонент RootLayout как основной компонент навигации.
+    return (
+        <NavigationContainer>
+            <Stack.Navigator>
+                <Stack.Screen name="index" options={{headerShown: false}} component={Index}/>
+            </Stack.Navigator>
+        </NavigationContainer>
+    )
 }
