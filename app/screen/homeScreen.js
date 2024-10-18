@@ -1,14 +1,10 @@
 import React, {useState} from 'react';
 import {StatusBar} from 'expo-status-bar';
-import {View, Image, Text, Dimensions, SafeAreaView, TouchableOpacity, ScrollView} from 'react-native';
-import {icons, images} from '@/constants';
+import {View, Image,  SafeAreaView,  ScrollView} from 'react-native';
+import { images} from '@/constants';
 import {hp, wp} from "@/helpers/common";
-import {SearchBar} from "react-native-screens";
 import SearchComponent from "@/components/searchComponent";
-import {MapPinIcon} from "react-native-heroicons/solid";
 import ShowLocation from "@/components/showLocation";
-import {CalendarDaysIcon} from "react-native-heroicons/outline";
-import {theme} from "@/theme";
 import ForecastComponent from "@/components/forecastComponent";
 import ForecastNextDay from "@/components/forecastNextDay";
 
@@ -75,6 +71,7 @@ const HomeScreen = () => {
                                 location={location}
                                 textSearchInput={textSearchInput}
                                 setShowLocation={setShowLocation}
+                                handleClick={handleClick}
                                 // showSearch={showSearch}
                                 // setToggleShowSearch={setToggleShowSearch}
                             />

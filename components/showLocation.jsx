@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text,  TouchableOpacity} from 'react-native';
 import {MapPinIcon} from "react-native-heroicons/solid";
 import Animated, {FadeInDown,FadeInUp} from 'react-native-reanimated';
-const ShowLocation = ({location,textSearchInput,setShowLocation}) => {
+const ShowLocation = ({location,textSearchInput,setShowLocation,handleClick}) => {
   return (
       <Animated.View
           entering={FadeInUp.delay(100).springify()}
