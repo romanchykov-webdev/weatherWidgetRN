@@ -1,0 +1,5 @@
+for icons
+npm i react-native-heroicons
+
+for animated
+npm install react-native-reanimated
