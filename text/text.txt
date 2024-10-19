@@ -3,3 +3,20 @@ npm i react-native-heroicons
 
 for animated
 npm install react-native-reanimated
+
+for get query
+npm i axios
+
+
+for debounce
+npm i lodash
+
+
+for progress bar
+npm i react-native-progress
+
+
+npm i @react-native-async-storage/async-storage
+
+get location
+npx expo install expo-location

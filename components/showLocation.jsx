@@ -1,8 +1,11 @@
 import React from 'react';
 import {View, Text,  TouchableOpacity} from 'react-native';
 import {MapPinIcon} from "react-native-heroicons/solid";
-import Animated, {FadeInDown,FadeInUp} from 'react-native-reanimated';
-const ShowLocation = ({location,textSearchInput,setShowLocation,handleClick}) => {
+import Animated, {FadeInUp} from 'react-native-reanimated';
+const ShowLocation = ({location,setShowLocation,handleClick}) => {
+
+    // console.log('ShowLocation location', JSON.stringify(location,null, 2));
+
   return (
       <Animated.View
           entering={FadeInUp.delay(100).springify()}
@@ -24,9 +27,17 @@ const ShowLocation = ({location,textSearchInput,setShowLocation,handleClick}) =>
                                           className={`flex-row items-center border-0 mb-1 p-4 ${borderClass}`}
                                       >
                                           <MapPinIcon size="24" color="gray"/>
-                                          <Text className="text-black text-lg ml-2">
-                                              London, United Kingdom
-                                          </Text>
+                                          <View className="flex-col ml-2">
+                                              <Text className="text-black text-lg  ">
+                                                  {loc?.name},
+
+                                              </Text>
+                                              <Text className="text-sx">
+                                                  region:{loc?.region}, country:{loc?.country}
+                                              </Text>
+                                          </View>
+
+
                                       </TouchableOpacity>
                                   )
                               })
